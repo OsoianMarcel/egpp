@@ -22,7 +22,7 @@ func TestProvider_Request(t *testing.T) {
 		return
 	}
 
-	if gasPrice.Standard == 0 || gasPrice.Fast == 0 {
+	if gasPrice.Standard == 0 || gasPrice.Fastest == 0 {
 		t.Error("all gas price properties should be greater than zero")
 	}
 

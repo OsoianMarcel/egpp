@@ -39,10 +39,10 @@ func (p Provider) parseApiResponse(resp []byte) (common.GasPrice, error) {
 	}
 
 	return common.GasPrice{
-		Standard: uint16(r.Average) / 10,
-		SafeLow:  uint16(r.SafeLow) / 10,
-		Fast:     uint16(r.Fast) / 10,
-		Fastest:  uint16(r.Fastest) / 10,
+		Standard: uint16(r.Average) * 10,
+		SafeLow:  uint16(r.SafeLow) * 10,
+		Fast:     uint16(r.Fast) * 10,
+		Fastest:  uint16(r.Fastest) * 10,
 		Provider: p.GetName(),
 	}, nil
 }
