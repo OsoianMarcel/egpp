@@ -2,15 +2,15 @@ package etherchain
 
 import (
 	"encoding/json"
+
 	"github.com/OsoianMarcel/egpp/common"
-	"strconv"
 )
 
 type apiJsonResponse struct {
-	Fast     string `json:"fast"`
-	Fastest  string `json:"fastest"`
-	SafeLow  string `json:"safeLow"`
-	Standard string `json:"standard"`
+	Fast     float32 `json:"fast"`
+	Fastest  float32 `json:"fastest"`
+	SafeLow  float32 `json:"safeLow"`
+	Standard float32 `json:"standard"`
 }
 
 type Provider struct{}
@@ -39,28 +39,11 @@ func (p Provider) parseApiResponse(resp []byte) (common.GasPrice, error) {
 		return common.GasPrice{}, err
 	}
 
-	standard, err := strconv.ParseFloat(r.Standard, 16)
-	if err != nil {
-		return common.GasPrice{}, err
-	}
-	safeLow, err := strconv.ParseFloat(r.SafeLow, 16)
-	if err != nil {
-		return common.GasPrice{}, err
-	}
-	fast, err := strconv.ParseFloat(r.Fast, 16)
-	if err != nil {
-		return common.GasPrice{}, err
-	}
-	fastest, err := strconv.ParseFloat(r.Fastest, 16)
-	if err != nil {
-		return common.GasPrice{}, err
-	}
-
 	return common.GasPrice{
-		Standard: uint16(standard * 1e2),
-		SafeLow:  uint16(safeLow * 1e2),
-		Fast:     uint16(fast * 1e2),
-		Fastest:  uint16(fastest * 1e2),
+		Standard: uint16(r.Standard * 1e2),
+		SafeLow:  uint16(r.SafeLow * 1e2),
+		Fast:     uint16(r.Fast * 1e2),
+		Fastest:  uint16(r.Fastest * 1e2),
 		Provider: p.GetName(),
 	}, nil
 }

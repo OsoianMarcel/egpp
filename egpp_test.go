@@ -1,12 +1,12 @@
 package egpp_test
 
 import (
-	"fmt"
+	"testing"
+
 	"github.com/OsoianMarcel/egpp"
 	"github.com/OsoianMarcel/egpp/common"
 	"github.com/OsoianMarcel/egpp/providers/ethergasstation"
 	"github.com/OsoianMarcel/egpp/providers/tester"
-	"testing"
 )
 
 func TestGetGasPriceWithFallback_FallbackSuccess(t *testing.T) {
@@ -42,17 +42,17 @@ func TestGetGasPriceAverage_Success(t *testing.T) {
 	providers := []common.Provider{
 		tester.NewProvider(true, common.GasPrice{
 			Provider: "1",
-			Standard: 3,
-			SafeLow:  1,
-			Fast:     5,
-			Fastest:  12,
+			Standard: 30,
+			SafeLow:  10,
+			Fast:     50,
+			Fastest:  200,
 		}),
 		tester.NewProvider(true, common.GasPrice{
 			Provider: "1",
-			Standard: 2,
-			SafeLow:  1,
+			Standard: 20,
+			SafeLow:  10,
 			Fast:     0,
-			Fastest:  10,
+			Fastest:  150,
 		}),
 	}
 
@@ -62,7 +62,17 @@ func TestGetGasPriceAverage_Success(t *testing.T) {
 		return
 	}
 
-	fmt.Printf("\n%+v\n", avgGasPrice)
+	if avgGasPrice.Provider != "Average Gas Price" {
+		t.Error("average gas price provider is wrong")
+		return
+	}
+
+	if avgGasPrice.Standard != 25 ||
+		avgGasPrice.SafeLow != 10 ||
+		avgGasPrice.Fast != 50 ||
+		avgGasPrice.Fastest != 175 {
+		t.Error("average gas price values are wrong")
+	}
 }
 
 func TestGetGasPriceAverage_AllFail(t *testing.T) {
