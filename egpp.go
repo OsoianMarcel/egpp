@@ -2,9 +2,11 @@ package egpp
 
 import (
 	"errors"
+
 	"github.com/OsoianMarcel/egpp/common"
 )
 
+// The method requests the gas price from specified providers in order and returns the first successful result
 func GetGasPriceWithFallback(providers []common.Provider) (common.GasPrice, error) {
 	for _, provider := range providers {
 		gasPrice, err := provider.Request()
@@ -16,6 +18,7 @@ func GetGasPriceWithFallback(providers []common.Provider) (common.GasPrice, erro
 	return common.GasPrice{}, errors.New("all providers failed")
 }
 
+// The method requests gas prices from all specified providers in parallel and returns a result with average values
 func GetGasPriceAverage(providers []common.Provider) (common.GasPrice, error) {
 	results := common.BatchRequests(providers)
 

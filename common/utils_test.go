@@ -2,11 +2,12 @@ package common_test
 
 import (
 	"bytes"
-	"github.com/OsoianMarcel/egpp/common"
-	"github.com/OsoianMarcel/egpp/providers/tester"
 	"net/http"
 	"net/http/httptest"
 	"testing"
+
+	"github.com/OsoianMarcel/egpp/common"
+	"github.com/OsoianMarcel/egpp/providers/tester"
 )
 
 func TestGetRequest_Error(t *testing.T) {

@@ -1,9 +1,10 @@
 package tester_test
 
 import (
+	"testing"
+
 	"github.com/OsoianMarcel/egpp/common"
 	"github.com/OsoianMarcel/egpp/providers/tester"
-	"testing"
 )
 
 func TestProvider_GetName(t *testing.T) {

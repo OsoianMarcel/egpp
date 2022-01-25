@@ -2,6 +2,7 @@ package tester
 
 import (
 	"errors"
+
 	"github.com/OsoianMarcel/egpp/common"
 )
 

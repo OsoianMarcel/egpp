@@ -1,8 +1,9 @@
 package ethergasstation_test
 
 import (
-	"github.com/OsoianMarcel/egpp/providers/ethergasstation"
 	"testing"
+
+	"github.com/OsoianMarcel/egpp/providers/ethergasstation"
 )
 
 func TestProvider_GetName(t *testing.T) {

@@ -1,8 +1,9 @@
 package etherscan_test
 
 import (
-	"github.com/OsoianMarcel/egpp/providers/etherscan"
 	"testing"
+
+	"github.com/OsoianMarcel/egpp/providers/etherscan"
 )
 
 func TestProvider_GetName(t *testing.T) {

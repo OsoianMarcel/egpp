@@ -2,6 +2,7 @@ package ethergasstation
 
 import (
 	"encoding/json"
+
 	"github.com/OsoianMarcel/egpp/common"
 )
 

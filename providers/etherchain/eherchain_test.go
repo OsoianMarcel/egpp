@@ -1,8 +1,9 @@
 package etherchain_test
 
 import (
-	"github.com/OsoianMarcel/egpp/providers/etherchain"
 	"testing"
+
+	"github.com/OsoianMarcel/egpp/providers/etherchain"
 )
 
 func TestProvider_GetName(t *testing.T) {

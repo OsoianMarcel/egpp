@@ -4,8 +4,9 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/OsoianMarcel/egpp/common"
 	"strconv"
+
+	"github.com/OsoianMarcel/egpp/common"
 )
 
 type apiResult struct {
