@@ -10,31 +10,31 @@ A Golang library used to fetch **Ethereum Gas Prices** from different gas price 
 package main
 
 import (
-	"fmt"
-	"log"
+    "fmt"
+    "log"
 
-	"github.com/OsoianMarcel/egpp"
-	"github.com/OsoianMarcel/egpp/common"
-	"github.com/OsoianMarcel/egpp/providers/etherchain"
-	"github.com/OsoianMarcel/egpp/providers/ethergasstation"
-	"github.com/OsoianMarcel/egpp/providers/etherscan"
+    "github.com/OsoianMarcel/egpp"
+    "github.com/OsoianMarcel/egpp/common"
+    "github.com/OsoianMarcel/egpp/providers/etherchain"
+    "github.com/OsoianMarcel/egpp/providers/ethergasstation"
+    "github.com/OsoianMarcel/egpp/providers/etherscan"
 )
 
 func main() {
     // Gas price providers
-	providers := []common.Provider{
-		ethergasstation.NewProvider(),
-		etherchain.NewProvider(),
-		etherscan.NewProvider(""),
-	}
+    providers := []common.Provider{
+        ethergasstation.NewProvider(),
+        etherchain.NewProvider(),
+        etherscan.NewProvider(""),
+    }
 
     // Requests the gas price values from providers in order and returns the first successful result
-	gasPriceStruct, err := egpp.GetGasPriceWithFallback(providers)
-	if err != nil {
-		log.Fatal(err)
-	}
+    gasPriceStruct, err := egpp.GetGasPriceWithFallback(providers)
+    if err != nil {
+        log.Fatal(err)
+    }
 
-	fmt.Printf("%+v\n", gasPriceStruct)
+    fmt.Printf("%+v\n", gasPriceStruct)
     // {Provider:Ether Gas Station Standard:9800 SafeLow:9200 Fast:14300 Fastest:14300}
 }
 ```
