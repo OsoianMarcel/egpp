@@ -1,21 +1,21 @@
-package etherchain_test
+package beaconcha_test
 
 import (
 	"testing"
 
-	"github.com/OsoianMarcel/egpp/providers/etherchain"
+	"github.com/OsoianMarcel/egpp/providers/beaconcha"
 )
 
 func TestProvider_GetName(t *testing.T) {
-	p := etherchain.NewProvider()
+	p := beaconcha.NewProvider()
 
-	if p.GetName() != "Etherchain" {
+	if p.GetName() != "Beaconcha" {
 		t.Error("wrong name")
 	}
 }
 
 func TestProvider_Request(t *testing.T) {
-	p := etherchain.NewProvider()
+	p := beaconcha.NewProvider()
 
 	gasPrice, err := p.Request()
 	if err != nil {
